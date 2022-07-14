@@ -146,7 +146,7 @@ export default {
   row-gap: 1em;
   width: fit-content;
   margin: 0 auto;
-  background-color: #f5f2e9;
+  background-color: var(--primary-background-color);
 }
 
 ul {

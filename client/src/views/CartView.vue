@@ -7,43 +7,38 @@
           <span>Proceed to Checkout</span>
         </router-link>
       </button>
+
       <cart-table></cart-table>
+
       <button class="secondary-button">
         <span> Continue Shopping</span>
       </button>
+
       <router-link to="/">
         <button class="remove-button">&nbsp; Remove All Books</button>
       </router-link>
 
       <div class="cart-page__order-summary-details-container">
         <div class="order-summary-title__text">Order Summary</div>
-        <div
-          class="order-summary-line__container"
-          data-a8n="order-summary__subtotal"
-        >
+        <div class="order-summary-line__container">
           <div class="order-summary-line__title">Subtotal</div>
           <div class="order-summary-line__price">$224.98</div>
         </div>
-        <div
-          class="order-summary-line__container"
-          data-a8n="order-summary__shipping-estimate"
-        >
+        <div class="order-summary-line__container">
           <div class="order-summary-line__title">Shipping</div>
           <div class="order-summary-line__price">TBD</div>
         </div>
-        <div
-          class="order-summary-line__container"
-          data-a8n="order-summary__tax-estimate"
-        >
-          <div class="order-summary-line__title">Tax</div>
+        <div class="order-summary-line__container">
+          <div class="order-summary-line__title">Tax (13%)</div>
           <div class="order-summary-line__price">$32.89</div>
         </div>
-        <div class="subtotal__general" data-a8n="order-summary__total-value">
-          <div class="subtotal__label" data-a8n="subtotal__label">Total</div>
-          <div class="subtotal__value" data-a8n="subtotal__value">$257.87</div>
+        <div class="subtotal__general">
+          <div class="subtotal__label">Total</div>
+          <div class="subtotal__value">$257.87</div>
         </div>
         <div class="order-summary__divider"></div>
       </div>
+
       <button class="hero-button">
         <router-link to="../checkout">
           <span>Proceed to Checkout</span>

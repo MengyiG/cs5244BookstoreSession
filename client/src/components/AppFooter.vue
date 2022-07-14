@@ -1,7 +1,7 @@
 <template>
   <footer class="container">
     <div class="copyright">
-      <p>Copyright ©2022 Shu Bookstore</p>
+      <p>Copyright &nbsp;ⓒ 2022 Shu Bookstore</p>
     </div>
     <div class="other-links">
       <router-link to="/">
@@ -55,6 +55,7 @@ footer {
 .footer-button:hover,
 .footer-button:active {
   color: var(--primary-color);
+  cursor: pointer;
 }
 
 .other-links,
@@ -62,8 +63,5 @@ footer {
 .social-media-icons {
   align-items: center;
   flex-shrink: 0;
-}
-
-.other-links {
 }
 </style>
