@@ -36,8 +36,6 @@ export default {
   padding-right: 5rem;
   padding-top: 13rem;
   height: 78vh;
-  min-height: 400pt;
-  max-height: 1000pt;
 }
 
 .hero-title {

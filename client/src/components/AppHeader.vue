@@ -170,5 +170,8 @@ a.img-text:visited {
   header {
     flex-direction: column;
   }
+  footer {
+    flex-direction: column;
+  }
 }
 </style>

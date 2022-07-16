@@ -26,6 +26,9 @@ export default {
 </script>
 
 <style>
+app {
+  height: 100vh;
+}
 .fade-enter,
 .fade-leave-to {
   opacity: 0;

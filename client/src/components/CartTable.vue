@@ -26,7 +26,10 @@
           <div class="cart-book-quantity">
             <span class="quantity">{{ item.quantity }}</span
             >&nbsp;
-            <button class="icon-button inc-button">
+            <button
+              class="icon-button inc-button"
+              @click="updateCart(item.book, item.quantity + 1)"
+            >
               <i class="fas fa-plus-circle"></i>
             </button>
             <button
