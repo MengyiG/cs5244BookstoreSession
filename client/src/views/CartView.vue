@@ -97,7 +97,7 @@ export default {
   font-weight: 500;
   letter-spacing: 0.027em;
   line-height: 1.33em;
-  padding: 1.3rem 5rem;
+  padding: 2rem 5rem;
   background-color: white;
 }
 
@@ -121,34 +121,27 @@ export default {
   padding: 20px;
   width: 350pt;
   height: max-content;
-  margin-left: 1rem;
+  margin-left: 5rem;
 }
 
 .order-summary-title__text {
   font: 13px/20px Helvetica, Arial, Verdana, sans-serif;
   -webkit-text-size-adjust: none;
   font-feature-settings: "liga" 0, "cilg" 0;
-  margin: 0;
-  padding: 0;
   color: #000;
-  font-family: "Futura Medium",
-    "Futura STD, Futura PT, Futura, Helvetica, Arial, Verdana", sans-serif;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 500;
-  letter-spacing: 1px;
-  line-height: 32px;
-  margin-bottom: 15px;
+  letter-spacing: 2px;
+  line-height: 40px;
+  margin-bottom: 20px;
 }
 
 .subtotal__general {
-  font: 13px/20px Helvetica, Arial, Verdana, sans-serif;
   -webkit-text-size-adjust: none;
   font-feature-settings: "liga" 0, "cilg" 0;
-  margin: 0;
   padding: 0;
-  font-family: "Gibson SemiBold", "Helvetica, Arial, Verdana", sans-serif;
   font-size: 16px;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   line-height: 20px;
   color: #000;
   margin-bottom: 10px;
@@ -159,7 +152,7 @@ export default {
   -webkit-box-align: baseline;
   align-items: baseline;
   border-top: 1px solid #d3cfb8;
-  padding-top: 13px;
+  padding-top: 20px;
 }
 
 .order-summary-line__container {
@@ -230,7 +223,7 @@ export default {
 }
 
 .continue:hover {
-  background-color: var(--primary-background-color);
+  background: var(--primary-background-color);
 }
 
 .shipping-info {

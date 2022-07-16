@@ -41,7 +41,9 @@
               <i class="fas fa-chevron-right fa-xl"></i>
             </button>
           </div>
-          <div class="cart-book-subtotal">$3.98</div>
+          <div class="cart-book-subtotal">
+            $??<i class="fa-solid fa-trash-can"></i>
+          </div>
         </li>
         <li class="line-sep" :key="item.book.bookId"></li>
       </template>
@@ -80,7 +82,7 @@ export default {
   row-gap: 1em;
   width: fit-content;
   margin: 0;
-  padding: 2rem 0;
+  padding: 0.8rem 0;
 }
 
 ul {
@@ -98,7 +100,7 @@ ul > li {
 }
 
 .table-heading > * {
-  padding: 1em;
+  padding: 0 2rem 2rem 2rem;
   border-bottom: 1px solid #d3cfb8;
 }
 
@@ -190,11 +192,17 @@ select {
 .remove-button {
   border: none;
   color: var(--default-text-color);
-  padding: 0;
+  padding: 1rem 2rem;
+  background-color: var(--secondary-background-color);
 }
 
 .remove-button:hover,
 .remove-button:active {
   color: var(--primary-color);
+  cursor: pointer;
+}
+
+.fa-trash-can {
+  color: var(--neutral-color);
 }
 </style>
