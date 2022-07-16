@@ -28,7 +28,7 @@
               class="icon-button dec-arrow-button"
               @click="updateCart(item.book, item.quantity - 1)"
             >
-              <i class="fas fa-chevron-left"></i>
+              <i class="fas fa-chevron-left fa-xl"></i>
             </button>
 
             &nbsp;<span class="quantity">{{ item.quantity }}</span
@@ -38,13 +38,17 @@
               class="icon-button inc-arrow-button"
               @click="updateCart(item.book, item.quantity + 1)"
             >
-              <i class="fas fa-chevron-right"></i>
+              <i class="fas fa-chevron-right fa-xl"></i>
             </button>
           </div>
           <div class="cart-book-subtotal">$3.98</div>
         </li>
         <li class="line-sep" :key="item.book.bookId"></li>
       </template>
+
+      <router-link to="/">
+        <button class="remove-button">&nbsp; Remove All Books</button>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -75,8 +79,8 @@ export default {
   grid-template-columns: max-content minmax(10em, 20em) repeat(3, max-content);
   row-gap: 1em;
   width: fit-content;
-  margin: 0 auto;
-  background-color: var(--table-background);
+  margin: 0;
+  padding: 2rem 0;
 }
 
 ul {
@@ -88,13 +92,14 @@ ul > li {
 }
 
 .table-heading {
-  background-color: #333;
-  color: white;
+  color: var(--default-text-color);
+  font-weight: bold;
+  font-size: large;
 }
 
 .table-heading > * {
-  background-color: #333;
-  padding: 0.5em;
+  padding: 1em;
+  border-bottom: 1px solid #d3cfb8;
 }
 
 .heading-book {
@@ -126,25 +131,6 @@ img {
   height: auto;
 }
 
-.rect {
-  background-color: var(--primary-color-dark);
-}
-
-.narrow-rect {
-  width: 75px;
-  height: 100px;
-}
-
-.square {
-  width: 100px;
-  height: 100px;
-}
-
-.wide-rect {
-  width: 125px;
-  height: 100px;
-}
-
 .cart-book-price {
   padding-left: 1em;
   text-align: right;
@@ -166,7 +152,7 @@ img {
 .line-sep {
   display: block;
   height: 2px;
-  background-color: #a4a0a0;
+  background-color: #d3cfb8;
   grid-column: 1 / -1;
 }
 
@@ -175,25 +161,6 @@ img {
 .icon-button {
   border: none;
   cursor: pointer;
-}
-
-.inc-button {
-  font-size: 1.125rem;
-  color: var(--primary-color);
-  margin-right: 0.25em;
-}
-
-.inc-button:hover {
-  color: var(--primary-color-dark);
-}
-
-.dec-button {
-  font-size: 1.125rem;
-  color: #ccc;
-}
-
-.dec-button:hover {
-  color: #aaa;
 }
 
 /* Chevron buttons */
@@ -206,7 +173,7 @@ img {
 
 .dec-arrow-button:hover,
 .inc-arrow-button:hover {
-  color: var(--primary-color-dark);
+  color: var(--default-text-color);
 }
 
 input[type="number"] {
@@ -218,5 +185,16 @@ select {
   color: white;
   border: 2px solid var(--primary-color-dark);
   border-radius: 3px;
+}
+
+.remove-button {
+  border: none;
+  color: var(--default-text-color);
+  padding: 0;
+}
+
+.remove-button:hover,
+.remove-button:active {
+  color: var(--primary-color);
 }
 </style>
