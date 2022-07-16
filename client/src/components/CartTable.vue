@@ -24,100 +24,27 @@
             ${{ (item.book.price / 100).toFixed(2) }}
           </div>
           <div class="cart-book-quantity">
-            <span class="quantity">{{ item.quantity }}</span
-            >&nbsp;
             <button
-              class="icon-button inc-button"
-              @click="updateCart(item.book, item.quantity + 1)"
-            >
-              <i class="fas fa-plus-circle"></i>
-            </button>
-            <button
-              class="icon-button dec-button"
+              class="icon-button dec-arrow-button"
               @click="updateCart(item.book, item.quantity - 1)"
             >
-              <i class="fas fa-minus-circle"></i>
+              <i class="fas fa-chevron-left"></i>
+            </button>
+
+            &nbsp;<span class="quantity">{{ item.quantity }}</span
+            >&nbsp;
+
+            <button
+              class="icon-button inc-arrow-button"
+              @click="updateCart(item.book, item.quantity + 1)"
+            >
+              <i class="fas fa-chevron-right"></i>
             </button>
           </div>
           <div class="cart-book-subtotal">$3.98</div>
         </li>
         <li class="line-sep" :key="item.book.bookId"></li>
       </template>
-
-      <li>
-        <div class="cart-book-image">
-          <div class="rect narrow-rect"></div>
-        </div>
-        <div class="cart-book-title">Book Title</div>
-        <div class="cart-book-price">$2.99</div>
-        <div class="cart-book-quantity">
-          <span class="quantity">2</span>&nbsp;
-          <button class="icon-button inc-button">
-            <i class="fas fa-plus-circle"></i>
-          </button>
-          <button class="icon-button dec-button">
-            <i class="fas fa-minus-circle"></i>
-          </button>
-        </div>
-        <div class="cart-book-subtotal">$3.98</div>
-      </li>
-      <li class="line-sep"></li>
-      <li>
-        <div class="cart-book-image">
-          <img src="@/assets/images/books/15 Minutes.jpeg" alt="Dune" />
-        </div>
-        <div class="cart-book-title">Book Title</div>
-        <div class="cart-book-price">$2.99</div>
-        <div class="cart-book-quantity">
-          <button class="icon-button dec-arrow-button">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <span class="quantity">&nbsp;&nbsp;2&nbsp;&nbsp;</span>
-          <button class="icon-button inc-arrow-button">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-        <div class="cart-book-subtotal">$3.98</div>
-      </li>
-      <li class="line-sep"></li>
-      <li>
-        <div class="cart-book-image">
-          <div class="rect square"></div>
-        </div>
-        <div class="cart-book-title">
-          A Very Long Book Title That Goes On and On As Though the Author Were
-          Very Impressed with Themself
-        </div>
-        <div class="cart-book-price">$43.50</div>
-        <div class="cart-book-quantity">
-          <input type="number" value="12" min="0" max="20" />
-        </div>
-        <div class="cart-book-subtotal">$522.00</div>
-      </li>
-      <li class="line-sep"></li>
-      <li>
-        <div class="cart-book-image">
-          <div class="rect wide-rect"></div>
-        </div>
-        <div class="cart-book-title">Book Title</div>
-        <div class="cart-book-price">$2.99</div>
-        <div class="cart-book-quantity">
-          <select id="quantity">
-            <option value="0">Qty: 0</option>
-            <option value="1">Qty: 1</option>
-            <option value="2">Qty: 2</option>
-            <option value="3">Qty: 3</option>
-            <option value="4">Qty: 4</option>
-            <option value="5">Qty: 5</option>
-            <option value="6">Qty: 6</option>
-            <option value="7">Qty: 7</option>
-            <option value="8">Qty: 8</option>
-            <option value="9">Qty: 9</option>
-            <option value="10">Qty: 10</option>
-          </select>
-        </div>
-        <div class="cart-book-subtotal">$3.98</div>
-      </li>
     </ul>
   </div>
 </template>
@@ -149,7 +76,7 @@ export default {
   row-gap: 1em;
   width: fit-content;
   margin: 0 auto;
-  background-color: var(--primary-background-color);
+  background-color: var(--table-background);
 }
 
 ul {
@@ -239,7 +166,7 @@ img {
 .line-sep {
   display: block;
   height: 2px;
-  background-color: gray;
+  background-color: #a4a0a0;
   grid-column: 1 / -1;
 }
 

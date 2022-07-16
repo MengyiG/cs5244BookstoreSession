@@ -135,7 +135,7 @@ export default {
   font-family: Helvetica, Arial, Verdana, sans-serif;
   line-height: 20px;
   color: #666;
-  background-color: rgba(245, 242, 233, 0.701961);
+  background-color: var(--table-background);
   padding: 20px;
   width: 350pt;
 }

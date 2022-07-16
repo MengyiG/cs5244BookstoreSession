@@ -37,6 +37,8 @@
 
   /* read now btn bg */
   --overlay-background: rgba(0, 0, 0, 0.62);
+  /*  table bg color*/
+  --table-background:rgba(245, 242, 233, 0.701961);
 }
 
 /* RESET */
