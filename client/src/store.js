@@ -4,6 +4,8 @@ import ApiService from "@/services/ApiService";
 import { ShoppingCart } from "@/models/ShoppingCart";
 Vue.use(Vuex);
 
+export const CART_STORAGE_KEY = "cart";
+
 export default new Vuex.Store({
   state: {
     categories: [],
@@ -25,12 +27,22 @@ export default new Vuex.Store({
     },
     ADD_TO_CART(state, book) {
       state.cart.addItem(book, 1);
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart));
     },
     // UPDATE_CART(state, item) {
     //   state.cart.update(item.book, item.quality);
     // },
     UPDATE_CART(state, { book, quantity }) {
       state.cart.update(book, quantity);
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart));
+    },
+    SET_CART(state, shoppingCart) {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(shoppingCart));
+      let newCart = new ShoppingCart();
+      shoppingCart.items.forEach((item) => {
+        newCart.addItem(item.book, item.quantity);
+      });
+      state.cart = newCart;
     },
   },
   actions: {
