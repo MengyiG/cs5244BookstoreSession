@@ -16,7 +16,9 @@
           :key="category.categoryId"
           class="button unselected-category-button"
         >
-          <router-link :to="'../category/' + category.name"
+          <router-link
+            class="continue-link"
+            :to="'../category/' + category.name"
             >{{ category.name }}
           </router-link>
         </li>

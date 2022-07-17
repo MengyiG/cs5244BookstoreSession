@@ -43,16 +43,14 @@
         </div>
 
         <!--two buttons-->
-        <button class="hero-button checkout">
-          <router-link to="../checkout">
-            <span>Proceed to Checkout</span>
-          </router-link>
-        </button>
-
-        <router-link class="go-back-link" to="../category/Classics">
-          <button class="secondary-button continue">
-            <span> Continue Shopping</span>
+        <router-link to="../checkout">
+          <button class="hero-button checkout">
+            <span>Proceed to Checkout </span>
           </button>
+        </router-link>
+        <div class="button-divider">&nbsp;</div>
+        <router-link :to="'../category/' + $store.state.selectedCategoryName">
+          <button class="secondary-button continue">Continue Browsing</button>
         </router-link>
 
         <!--        shipping info-->
@@ -147,7 +145,7 @@ export default {
   padding: 20px;
   width: 350pt;
   height: max-content;
-  margin-left: 5rem;
+  margin-left: 3rem;
 }
 
 .order-summary-title__text {
@@ -174,7 +172,7 @@ export default {
   letter-spacing: 1px;
   line-height: 20px;
   color: #000;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   display: flex;
   font-weight: 600;
   -webkit-box-pack: justify;
@@ -206,7 +204,7 @@ export default {
   border: 2px solid black;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
-  padding: 0.3rem 4rem;
+  padding: 0.3rem 5rem;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.4s;
@@ -240,24 +238,24 @@ export default {
 }
 
 .checkout {
-  margin-top: 2.5rem;
   height: 3rem;
+  width: 100%;
+}
+
+.button-divider {
+  height: 1rem;
 }
 
 .continue {
   color: var(--default-text-color);
-  margin: 0;
-  padding: 0.5rem 6rem;
   white-space: nowrap;
+  padding: 0 3rem;
+  height: 2.8rem;
+  width: 100%;
 }
 
 .continue:hover {
   background: var(--primary-background-color);
-}
-
-.go-back-link {
-  align-self: center;
-  margin-top: 1rem;
 }
 
 .shipping-info {

@@ -3,7 +3,9 @@
     <ul>
       <li class="table-heading">
         <div class="heading-book">Book</div>
-        <div class="heading-price">Price / Quantity</div>
+        <div class="heading-price">Price</div>
+        <div class="heading-quantity">Quantity</div>
+
         <div class="heading-subtotal">Amount</div>
       </li>
 
@@ -83,7 +85,7 @@ export default {
   row-gap: 1em;
   width: fit-content;
   margin: 0;
-  padding: 0.8rem 0;
+  padding: 0.8rem 0 0 1rem;
 }
 
 ul {
@@ -101,7 +103,7 @@ ul > li {
 }
 
 .table-heading > * {
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 0 1.5rem 2rem;
   border-bottom: 1px solid #d3cfb8;
 }
 
@@ -110,13 +112,20 @@ ul > li {
 }
 
 .heading-price {
-  grid-column: 3 / 5;
+  grid-column: 3 / 4;
   text-align: right;
+}
+
+.heading-quantity {
+  grid-column: 4 / 5;
+  text-align: center;
+  padding-right: 1.5rem;
 }
 
 .heading-subtotal {
   text-align: right;
   grid-column: -2 / -1;
+  padding-right: 1rem;
 }
 
 .cart-book-image {
