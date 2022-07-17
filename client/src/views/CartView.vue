@@ -1,106 +1,120 @@
 <template>
-  <div class="cart-view">
-    <h1>Your Shopping Cart</h1>
-    <div class="cart-page-container">
-      <cart-table></cart-table>
-      <!--      order summary-->
-      <div class="cart-page__order-summary-details-container">
-        <div class="order-summary">
-          <div class="order-summary-title__text">Order Summary</div>
+  <div class="wrapper">
+    <div v-if="$store.state.cart.numberOfItems > 0" class="cart-view">
+      <h1>Your Shopping Cart</h1>
+      <div class="cart-page-container">
+        <cart-table></cart-table>
+        <!--      order summary-->
+        <div class="cart-page__order-summary-details-container">
+          <div class="order-summary">
+            <div class="order-summary-title__text">Order Summary</div>
 
-          <div class="item-count">
-            <template v-if="$store.state.cart.numberOfItems > 1">
-              Your cart has {{ $store.state.cart.numberOfItems }} items
-            </template>
-            <template v-else>
-              Your cart has {{ $store.state.cart.numberOfItems }} item
-            </template>
-          </div>
-
-          <div class="order-summary-line__container">
-            <div class="order-summary-line__title">Subtotal</div>
-            <div class="order-summary-line__price">
-              {{ $store.state.cart.subtotal | asDollarsAndCents }}
+            <div class="item-count">
+              <template v-if="$store.state.cart.numberOfItems > 1">
+                Your cart has {{ $store.state.cart.numberOfItems }} items
+              </template>
+              <template v-else>
+                Your cart has {{ $store.state.cart.numberOfItems }} item
+              </template>
             </div>
-          </div>
-          <div class="order-summary-line__container">
-            <div class="order-summary-line__title">Shipping</div>
-            <div class="order-summary-line__price">TBD</div>
-          </div>
-          <div class="order-summary-line__container">
-            <div class="order-summary-line__title">Tax (13%)</div>
-            <div class="order-summary-line__price">
-              {{ ($store.state.cart.subtotal * 0.13) | asDollarsAndCents }}
-            </div>
-          </div>
-          <div class="subtotal__general">
-            <div class="subtotal__label">Total</div>
-            <div class="subtotal__value">
-              {{ ($store.state.cart.subtotal * 1.13) | asDollarsAndCents }}
-            </div>
-          </div>
-          <div class="order-summary__divider"></div>
-        </div>
 
-        <!--two buttons-->
-        <router-link to="../checkout">
-          <button class="hero-button checkout">
-            <span>Proceed to Checkout </span>
-          </button>
-        </router-link>
-        <div class="button-divider">&nbsp;</div>
-        <router-link :to="'../category/' + $store.state.selectedCategoryName">
-          <button class="secondary-button continue">Continue Browsing</button>
-        </router-link>
+            <div class="order-summary-line__container">
+              <div class="order-summary-line__title">Subtotal</div>
+              <div class="order-summary-line__price">
+                {{ $store.state.cart.subtotal | asDollarsAndCents }}
+              </div>
+            </div>
+            <div class="order-summary-line__container">
+              <div class="order-summary-line__title">Shipping</div>
+              <div class="order-summary-line__price">TBD</div>
+            </div>
+            <div class="order-summary-line__container">
+              <div class="order-summary-line__title">Tax (13%)</div>
+              <div class="order-summary-line__price">
+                {{ ($store.state.cart.subtotal * 0.13) | asDollarsAndCents }}
+              </div>
+            </div>
+            <div class="subtotal__general">
+              <div class="subtotal__label">Total</div>
+              <div class="subtotal__value">
+                {{ ($store.state.cart.subtotal * 1.13) | asDollarsAndCents }}
+              </div>
+            </div>
+            <div class="order-summary__divider"></div>
+          </div>
 
-        <!--        shipping info-->
-        <div class="shipping-info">
-          <div class="cart-page-header__shipping-container">
-            <div class="cart-page-header__shipping-details">
-              <fieldset class="cart-shipping-toggle">
-                <legend>
-                  <h3 class="shipping-toggle__title">
-                    How would you like to get your order?
-                  </h3>
-                </legend>
-                <div>
-                  <input
-                    class="shipping-option"
-                    type="checkbox"
-                    id="ship"
-                    name="interest"
-                    value="coding"
-                    checked
-                  />
-                  <label for="coding">&nbsp;Ship to an address</label>
+          <!--two buttons-->
+          <router-link to="../checkout">
+            <button class="hero-button checkout">
+              <span>Proceed to Checkout </span>
+            </button>
+          </router-link>
+          <div class="button-divider">&nbsp;</div>
+          <router-link :to="'../category/' + $store.state.selectedCategoryName">
+            <button class="secondary-button continue">Continue Browsing</button>
+          </router-link>
+
+          <!--        shipping info-->
+          <div class="shipping-info">
+            <div class="cart-page-header__shipping-container">
+              <div class="cart-page-header__shipping-details">
+                <fieldset class="cart-shipping-toggle">
+                  <legend>
+                    <h3 class="shipping-toggle__title">
+                      How would you like to get your order?
+                    </h3>
+                  </legend>
+                  <div>
+                    <input
+                      class="shipping-option"
+                      type="checkbox"
+                      id="ship"
+                      name="interest"
+                      value="coding"
+                      checked
+                    />
+                    <label for="coding">&nbsp;Ship to an address</label>
+                  </div>
+                  <div>
+                    <input
+                      class="shipping-option"
+                      type="checkbox"
+                      id="pickup"
+                      name="interest"
+                      value="music"
+                    />
+                    <label for="music">&nbsp;Pick up in store</label>
+                  </div>
+                </fieldset>
+
+                <div class="cart-item-shipping__title">
+                  <i class="fa-solid fa-truck-arrow-right"></i>
+                  &nbsp;
+                  <template v-if="$store.state.cart.numberOfItems > 1">
+                    Ship {{ $store.state.cart.numberOfItems }} items
+                  </template>
+                  <template v-else>
+                    Ship {{ $store.state.cart.numberOfItems }} item
+                  </template>
+                  to an address
                 </div>
-                <div>
-                  <input
-                    class="shipping-option"
-                    type="checkbox"
-                    id="pickup"
-                    name="interest"
-                    value="music"
-                  />
-                  <label for="music">&nbsp;Pick up in store</label>
-                </div>
-              </fieldset>
-
-              <div class="cart-item-shipping__title">
-                <i class="fa-solid fa-truck-arrow-right"></i>
-                &nbsp;
-                <template v-if="$store.state.cart.numberOfItems > 1">
-                  Ship {{ $store.state.cart.numberOfItems }} items
-                </template>
-                <template v-else>
-                  Ship {{ $store.state.cart.numberOfItems }} item
-                </template>
-                to an address
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div v-else class="cart-view">
+      <h2>
+        There is nothing in the cart now.<br />
+        Let's start some reading.
+        <i class="fa-brands fa-readme"></i>
+      </h2>
+      <img
+        class="image-cart"
+        src="../assets/images/site/readcart.jpeg"
+        alt="read"
+      />
     </div>
   </div>
 </template>
@@ -123,6 +137,18 @@ export default {
   line-height: 1.33em;
   padding: 2rem 5rem;
   background-color: white;
+}
+
+.cart-view > h2 {
+  font-weight: 500;
+  letter-spacing: 0.027em;
+  line-height: 2em;
+  padding: 1rem 5rem;
+  border: 1px solid #dedede;
+  border-left: none;
+  border-right: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .cart-page-container {
@@ -270,6 +296,13 @@ export default {
 .shipping-option {
   margin: 1rem 1rem;
   padding: 0 1rem;
+}
+
+.image-cart {
+  height: 80vh;
+  padding: 1rem 5rem;
+  margin-top: 1rem;
+  opacity: 95%;
 }
 
 @media (max-width: 1210px) {
