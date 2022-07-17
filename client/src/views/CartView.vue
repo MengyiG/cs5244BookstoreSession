@@ -7,9 +7,21 @@
       <div class="cart-page__order-summary-details-container">
         <div class="order-summary">
           <div class="order-summary-title__text">Order Summary</div>
+
+          <div class="item-count">
+            <template v-if="$store.state.cart.numberOfItems > 1">
+              Your cart has {{ $store.state.cart.numberOfItems }} items
+            </template>
+            <template v-else>
+              Your cart has {{ $store.state.cart.numberOfItems }} item
+            </template>
+          </div>
+
           <div class="order-summary-line__container">
             <div class="order-summary-line__title">Subtotal</div>
-            <div class="order-summary-line__price">$224.98</div>
+            <div class="order-summary-line__price">
+              {{ $store.state.cart.subtotal | asDollarsAndCents }}
+            </div>
           </div>
           <div class="order-summary-line__container">
             <div class="order-summary-line__title">Shipping</div>
@@ -17,11 +29,15 @@
           </div>
           <div class="order-summary-line__container">
             <div class="order-summary-line__title">Tax (13%)</div>
-            <div class="order-summary-line__price">$32.89</div>
+            <div class="order-summary-line__price">
+              {{ ($store.state.cart.subtotal * 0.13) | asDollarsAndCents }}
+            </div>
           </div>
           <div class="subtotal__general">
             <div class="subtotal__label">Total</div>
-            <div class="subtotal__value">$257.87</div>
+            <div class="subtotal__value">
+              {{ ($store.state.cart.subtotal * 1.13) | asDollarsAndCents }}
+            </div>
           </div>
           <div class="order-summary__divider"></div>
         </div>
@@ -32,9 +48,12 @@
             <span>Proceed to Checkout</span>
           </router-link>
         </button>
-        <button class="secondary-button continue">
-          <span> Continue Shopping</span>
-        </button>
+
+        <router-link class="go-back-link" to="../category/Classics">
+          <button class="secondary-button continue">
+            <span> Continue Shopping</span>
+          </button>
+        </router-link>
 
         <!--        shipping info-->
         <div class="shipping-info">
@@ -71,7 +90,14 @@
 
               <div class="cart-item-shipping__title">
                 <i class="fa-solid fa-truck-arrow-right"></i>
-                &nbsp;Shipping ???? items to an address
+                &nbsp;
+                <template v-if="$store.state.cart.numberOfItems > 1">
+                  Ship {{ $store.state.cart.numberOfItems }} items
+                </template>
+                <template v-else>
+                  Ship {{ $store.state.cart.numberOfItems }} item
+                </template>
+                to an address
               </div>
             </div>
           </div>
@@ -103,7 +129,7 @@ export default {
 
 .cart-page-container {
   display: flex;
-  padding: 0 4rem;
+  padding: 0.5rem 4rem 2rem 2.5rem;
   flex-direction: row;
   justify-content: space-between;
   background-color: white;
@@ -136,10 +162,14 @@ export default {
   margin-bottom: 20px;
 }
 
+.item-count {
+  margin-bottom: 1.5rem;
+}
+
 .subtotal__general {
   -webkit-text-size-adjust: none;
   font-feature-settings: "liga" 0, "cilg" 0;
-  padding: 0;
+  padding: 20px 0 0 0;
   font-size: 16px;
   letter-spacing: 1px;
   line-height: 20px;
@@ -152,15 +182,13 @@ export default {
   -webkit-box-align: baseline;
   align-items: baseline;
   border-top: 1px solid #d3cfb8;
-  padding-top: 20px;
 }
 
 .order-summary-line__container {
-  font: 13px/20px Helvetica, Arial, Verdana, sans-serif;
   -webkit-text-size-adjust: none;
   font-feature-settings: "liga" 0, "cilg" 0;
   margin: 0;
-  padding: 0;
+  padding: 0 0 15px 0;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -169,8 +197,7 @@ export default {
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
-  letter-spacing: 0.5px;
-  padding-bottom: 15px;
+  letter-spacing: 1px;
 }
 
 .hero-button {
@@ -218,12 +245,19 @@ export default {
 }
 
 .continue {
-  margin: 1.5rem;
   color: var(--default-text-color);
+  margin: 0;
+  padding: 0.5rem 6rem;
+  white-space: nowrap;
 }
 
 .continue:hover {
   background: var(--primary-background-color);
+}
+
+.go-back-link {
+  align-self: center;
+  margin-top: 1rem;
 }
 
 .shipping-info {
@@ -240,8 +274,8 @@ export default {
   padding: 0 1rem;
 }
 
-@media (max-width: 997px) {
-  cart-page-container {
+@media (max-width: 1210px) {
+  .cart-page-container {
     display: flex;
     flex-direction: column;
   }

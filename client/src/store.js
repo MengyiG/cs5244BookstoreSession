@@ -44,6 +44,10 @@ export default new Vuex.Store({
       });
       state.cart = newCart;
     },
+    CLEAR_CART(state) {
+      localStorage.removeItem(CART_STORAGE_KEY);
+      state.cart.clear();
+    },
   },
   actions: {
     //capturing any asynchronous network calls, and other business logic
@@ -76,6 +80,9 @@ export default new Vuex.Store({
     },
     updateCart(context, { book, quantity }) {
       context.commit("UPDATE_CART", { book, quantity });
+    },
+    clearCart({ commit }) {
+      commit("CLEAR_CART");
     },
   },
 });

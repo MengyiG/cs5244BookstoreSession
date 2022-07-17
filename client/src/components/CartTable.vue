@@ -15,13 +15,11 @@
                 require('@/assets/images/books/' + bookImageFileName(item.book))
               "
               :alt="item.book.title"
-              width="100px"
-              height="auto"
             />
           </div>
           <div class="cart-book-title">{{ item.book.title }}</div>
           <div class="cart-book-price">
-            ${{ (item.book.price / 100).toFixed(2) }}
+            {{ item.book.price | asDollarsAndCents }}
           </div>
           <div class="cart-book-quantity">
             <button
@@ -42,15 +40,15 @@
             </button>
           </div>
           <div class="cart-book-subtotal">
-            $??<i class="fa-solid fa-trash-can"></i>
+            {{ item.total | asDollarsAndCents }}
           </div>
         </li>
         <li class="line-sep" :key="item.book.bookId"></li>
       </template>
 
-      <router-link to="/">
-        <button class="remove-button">&nbsp; Remove All Books</button>
-      </router-link>
+      <button class="remove-button" @click="clearCart">
+        <i class="fa-regular fa-trash-can"></i>&nbsp; Remove All Books
+      </button>
     </ul>
   </div>
 </template>
@@ -69,6 +67,9 @@ export default {
     },
     updateCart(book, quantity) {
       this.$store.dispatch("updateCart", { book, quantity });
+    },
+    clearCart() {
+      this.$store.dispatch("clearCart");
     },
   },
 };
@@ -120,6 +121,7 @@ ul > li {
 
 .cart-book-image {
   padding: 0 1em;
+  width: 80pt;
 }
 
 .cart-book-image > * {
@@ -139,8 +141,8 @@ img {
 }
 
 .cart-book-quantity {
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .cart-book-subtotal {

@@ -24,6 +24,9 @@ export default {
 </script>
 
 <style scoped>
+.checkout-view {
+  background-color: var(--secondary-background-color);
+}
 .checkout-view > h1 {
   font-weight: 500;
   letter-spacing: 0.027em;

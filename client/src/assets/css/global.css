@@ -201,6 +201,7 @@ body {
   border-radius: 40px;
   cursor: pointer;
   height: 30pt;
+  color: var(--default-text-color);
 }
 
 .secondary-button:hover,
