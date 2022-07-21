@@ -28,6 +28,7 @@
   --neutral-color: #9E9A9A;
   --primary-color: #ffc300;
   --primary-color-dark:rgb(209, 157, 27);
+  --border-color: #dedede;
   
   /* main, header, and footer bg color */
   --primary-background-color: whitesmoke;

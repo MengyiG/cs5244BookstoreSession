@@ -112,12 +112,10 @@ a.img-text:visited {
   background: white;
   width: 20em;
   border: 2px solid black;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
 }
 
 .search-bar:focus {
-  box-shadow: none;
   background: var(--primary-color);
   opacity: 80%;
   outline: none;
@@ -126,6 +124,7 @@ a.img-text:visited {
 .search-bar:focus-visible {
   box-shadow: none;
   outline-color: var(--primary-color);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .header-right {

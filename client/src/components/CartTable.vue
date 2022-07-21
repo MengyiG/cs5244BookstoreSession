@@ -47,11 +47,10 @@
         </li>
         <li class="line-sep" :key="item.book.bookId"></li>
       </template>
-
-      <button class="remove-button" @click="clearCart">
-        <i class="fa-regular fa-trash-can"></i>&nbsp; Remove All Books
-      </button>
     </ul>
+    <button class="remove-button" @click="clearCart">
+      <i class="fa-regular fa-trash-can"></i>&nbsp; Remove All Books
+    </button>
   </div>
 </template>
 
@@ -136,6 +135,10 @@ ul > li {
 .cart-book-image > * {
   margin-left: auto;
   margin-right: 0;
+}
+
+.cart-book-title {
+  margin-left: -3rem;
 }
 
 img {
